@@ -1,0 +1,301 @@
+{
+  "teamList_t1": [
+    {
+      "widgetId": 0,
+      "widgetType": "todo-widget",
+      "widgetTitle": "Weather Widget",
+      "widgetContent": "Today's weather: Sunny",
+      "widgetColor": "#FFA500",
+      "contents": [
+        "Tasks: Buy groceries, Finish project",
+        "There's a lot to do",
+        "Why are there so many?"
+      ]
+    },
+    {
+      "widgetId": 1,
+      "widgetType": "board-widget",
+      "widgetTitle": "board-widget",
+      "widgetContent": "Today's weather: Sunny",
+      "widgetColor": "#FFA500",
+      "contents": [
+        "Someone I’m going to study with at 10pm tonight",
+        "Can you do it?",
+        "No, you probably can’t lol"
+      ]
+    },
+    {
+      "widgetId": 2,
+      "widgetType": "teamInfo-widget",
+      "widgetTitle": "teamInfo-widget",
+      "widgetContent": "Today's weather: Sunny",
+      "widgetColor": "#FFA500",
+      "teamName": "42 Hwangcha",
+      "teamImage": "image42.jpeg",
+      "tags": [
+        "hi",
+        "hello",
+        "bye"
+      ],
+      "time": "2021-10-20"
+    },
+    {
+      "widgetId": 3,
+      "widgetType": "notice-widget",
+      "widgetTitle": "notice-widget",
+      "widgetContent": "Today's weather: Sunny",
+      "widgetColor": "#FFA500",
+      "title": "Notice",
+      "writer": "Minsu Kim",
+      "content": "Please upload this week's meeting minutes"
+    },
+    {
+      "widgetId": 4,
+      "widgetType": "link-widget",
+      "widgetTitle": "link-widget",
+      "widgetContent": "Today's weather: Sunny",
+      "widgetColor": "#FFA500",
+      "linkList": [
+        {
+          "imageUrl": "google.com",
+          "linkTitle": "google"
+        },
+        {
+          "imageUrl": "naver.com",
+          "linkTitle": "Slack"
+        }
+      ]
+    }
+  ],
+  "layout_1": {
+    "state": {
+      "breakpoints": "lg",
+      "layouts": {
+        "lg": [
+          {
+            "w": 1,
+            "h": 1,
+            "x": 4,
+            "y": 0,
+            "i": "0",
+            "moved": false,
+            "static": false
+          },
+          {
+            "w": 1,
+            "h": 2,
+            "x": 3,
+            "y": 0,
+            "i": "1",
+            "moved": false,
+            "static": false
+          },
+          {
+            "w": 2,
+            "h": 1,
+            "x": 0,
+            "y": 2,
+            "i": "2",
+            "moved": false,
+            "static": false
+          },
+          {
+            "w": 2,
+            "h": 2,
+            "x": 0,
+            "y": 3,
+            "i": "3",
+            "moved": false,
+            "static": false
+          },
+          {
+            "w": 1,
+            "h": 1,
+            "x": 4,
+            "y": 1,
+            "i": "4",
+            "moved": false,
+            "static": false
+          },
+          {
+            "w": 2,
+            "h": 2,
+            "x": 0,
+            "y": 0,
+            "i": "5",
+            "moved": false,
+            "static": false
+          }
+        ],
+        "sm": [
+          {
+            "w": 1,
+            "h": 1,
+            "x": 4,
+            "y": 0,
+            "i": "0",
+            "moved": false,
+            "static": false
+          },
+          {
+            "w": 1,
+            "h": 2,
+            "x": 3,
+            "y": 0,
+            "i": "1",
+            "moved": false,
+            "static": false
+          },
+          {
+            "w": 2,
+            "h": 1,
+            "x": 0,
+            "y": 2,
+            "i": "2",
+            "moved": false,
+            "static": false
+          },
+          {
+            "w": 2,
+            "h": 2,
+            "x": 0,
+            "y": 3,
+            "i": "3",
+            "moved": false,
+            "static": false
+          },
+          {
+            "w": 1,
+            "h": 1,
+            "x": 4,
+            "y": 1,
+            "i": "4",
+            "moved": false,
+            "static": false
+          },
+          {
+            "w": 2,
+            "h": 2,
+            "x": 0,
+            "y": 0,
+            "i": "5",
+            "moved": false,
+            "static": false
+          }
+        ],
+        "md": [
+          {
+            "w": 1,
+            "h": 1,
+            "x": 4,
+            "y": 0,
+            "i": "0",
+            "moved": false,
+            "static": false
+          },
+          {
+            "w": 1,
+            "h": 2,
+            "x": 3,
+            "y": 0,
+            "i": "1",
+            "moved": false,
+            "static": false
+          },
+          {
+            "w": 2,
+            "h": 1,
+            "x": 0,
+            "y": 2,
+            "i": "2",
+            "moved": false,
+            "static": false
+          },
+          {
+            "w": 2,
+            "h": 2,
+            "x": 0,
+            "y": 3,
+            "i": "3",
+            "moved": false,
+            "static": false
+          },
+          {
+            "w": 1,
+            "h": 1,
+            "x": 4,
+            "y": 1,
+            "i": "4",
+            "moved": false,
+            "static": false
+          },
+          {
+            "w": 2,
+            "h": 2,
+            "x": 0,
+            "y": 0,
+            "i": "5",
+            "moved": false,
+            "static": false
+          }
+        ],
+        "xs": [
+          {
+            "w": 1,
+            "h": 1,
+            "x": 4,
+            "y": 0,
+            "i": "0",
+            "moved": false,
+            "static": false
+          },
+          {
+            "w": 1,
+            "h": 2,
+            "x": 3,
+            "y": 0,
+            "i": "1",
+            "moved": false,
+            "static": false
+          },
+          {
+            "w": 2,
+            "h": 1,
+            "x": 0,
+            "y": 2,
+            "i": "2",
+            "moved": false,
+            "static": false
+          },
+          {
+            "w": 2,
+            "h": 2,
+            "x": 0,
+            "y": 3,
+            "i": "3",
+            "moved": false,
+            "static": false
+          },
+          {
+            "w": 1,
+            "h": 1,
+            "x": 4,
+            "y": 1,
+            "i": "4",
+            "moved": false,
+            "static": false
+          },
+          {
+            "w": 2,
+            "h": 2,
+            "x": 0,
+            "y": 0,
+            "i": "5",
+            "moved": false,
+            "static": false
+          }
+        ]
+      }
+    }
+  }
+}
