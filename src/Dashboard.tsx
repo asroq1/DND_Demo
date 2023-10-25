@@ -2,17 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { Responsive, WidthProvider, Layout } from 'react-grid-layout'
 import Grid from '@mui/material/Grid'
 import WidgetCard from './WidgetCard'
-//import WidgetComponent from "./WidgetComponent";
-import { Button } from '@mui/material'
+import { Box, Button } from '@mui/material'
 import { randomPastelColor } from './App'
-//import Image42 from "./assets/image42.jpeg";
 import TodoWidget from './components/TodoWidget'
 import CustomCard from './components/CustomCard'
 import TeamInformationWidget from './components/TeamInformationWidget'
 import BoardWdiget from './components/BoardWidget'
 import NoticeWidget from './components/NoticeWidget'
 import axios from 'axios'
-import { json } from 'stream/consumers'
 
 interface DashboardProps {
   widgetList: Array<any>
@@ -46,13 +43,16 @@ const Dashboard: React.FC<DashboardProps> = ({ widgetList }) => {
     h: 1,
   })
 
+  // 여기서 활용하는 get요청은 서버에서 받아온 위치 좌표 데이터를 state에 저장하는 것이다.
+  // layout_1은 죄표 값.
+
   useEffect(() => {
     const getData = async () => {
       try {
         const response = await axios.get('http://localhost:4000/layout_1')
         const jsonData = response.data
         setState(jsonData.state)
-        console.log('after', jsonData)
+        console.log('받아온 layout 좌표', jsonData)
       } catch (error) {
         console.error('Error fetching data:', error)
       }
@@ -118,21 +118,21 @@ const Dashboard: React.FC<DashboardProps> = ({ widgetList }) => {
       ],
     },
   })
-  const [updatedLayouts, setupdatedLayouts] = useState<{
-    breakpoints: string
-    layouts: {
-      [key: string]: {
-        x: number
-        y: number
-        w: number
-        h: number
-        i: string
-        minW?: number
-        minH?: number
-        type: string
-      }[]
-    }
-  }>()
+  // const [updatedLayouts, setupdatedLayouts] = useState<{
+  //   breakpoints: string
+  //   layouts: {
+  //     [key: string]: {
+  //       x: number
+  //       y: number
+  //       w: number
+  //       h: number
+  //       i: string
+  //       minW?: number
+  //       minH?: number
+  //       type: string
+  //     }[]
+  //   }
+  // }>()
   //레이아웃 공간 계산
   useEffect(() => {
     let totalVol = 0
@@ -237,6 +237,7 @@ const Dashboard: React.FC<DashboardProps> = ({ widgetList }) => {
         ...(droppedElementId === 'text-input' ? { minW: 2 } : {}),
         //image-input의 최소 크기 2 * 2
         ...(droppedElementId === 'image-input' ? { minW: 2, minH: 2 } : {}),
+        // 여기서 widget종류에 따라 위젯의 크기를 설정할 수 있음
         ...(droppedElementId === 'todo-widget'
           ? { x: 0, y: 0, w: 2, h: 2 }
           : {}),
@@ -265,7 +266,6 @@ const Dashboard: React.FC<DashboardProps> = ({ widgetList }) => {
         widgetColor: randomPastelColor(),
       },
     ])
-    //console.log("ondrop:", state);
     setIndex(index + 1)
     //drag-drop 종료
     setIsDropping(false)
@@ -278,8 +278,11 @@ const Dashboard: React.FC<DashboardProps> = ({ widgetList }) => {
       ...prevState,
       breakpoints: breakpoint,
     }))
-    //console.log("breakpoint change!: ", breakpoint);
+    console.log('breakpoint change!: ', breakpoint)
   }
+
+  // 편집 버튼 클릭 이후 확인 버튼을 클릭하면 동작하는 함수.
+  // 변경된 위치 좌표 값이 잘 반영 안돼서 새로운 객체로 만들어서 updatedLayouts로 넣어줌
 
   const onLayoutReset = async () => {
     // 레이아웃 정보를 초기 레이아웃으로 설정합니다.
@@ -293,11 +296,7 @@ const Dashboard: React.FC<DashboardProps> = ({ widgetList }) => {
           ...state.layouts,
         },
       }
-      // setupdatedLayouts({
-      //   breakpoints: state.breakpoints,
-      //   layouts: state.layouts,
-      // })
-      // setWidgets(widgets)
+
       console.log('업데이트된 데이터', updatedLayouts)
       const response = await axios.put('http://localhost:4000/layout_1', {
         state: updatedLayouts,
@@ -311,23 +310,9 @@ const Dashboard: React.FC<DashboardProps> = ({ widgetList }) => {
 
   // ...
 
-  ;<Button
-    onClick={() => {
-      setIsEditMode(!isEditMode)
-      if (!isEditMode) {
-        onLayoutReset()
-      }
-    }}
-    size='large'
-    sx={{ fontWeight: 'bold' }}
-  >
-    {isEditMode ? '편집' : '확인'}
-  </Button>
-
   return (
     <>
-      {/* 헤더 영역 */}
-      <div
+      <Box
         style={{
           display: 'flex',
           padding: '10px',
@@ -350,9 +335,9 @@ const Dashboard: React.FC<DashboardProps> = ({ widgetList }) => {
         >
           {isEditMode ? '확인' : '편집'}
         </Button>
-      </div>
+      </Box>
       {/* 툴박스 영역 */}
-      <div
+      <Box
         style={{
           backgroundColor: 'skyblue',
           borderRadius: '5px',
@@ -370,7 +355,7 @@ const Dashboard: React.FC<DashboardProps> = ({ widgetList }) => {
         />
         <CustomCard type={'notice-widget'} handleDragStart={handleDragStart} />
         <CustomCard type={'link-widget'} handleDragStart={handleDragStart} />
-      </div>
+      </Box>
       {/* 그리드 영역 */}
       <ResponsiveGridLayout
         layouts={state.layouts}
@@ -427,7 +412,7 @@ const Dashboard: React.FC<DashboardProps> = ({ widgetList }) => {
             // 위젯의 인덱스 값 -> state의 layout index값으로 찾아옴
             // console.log('sm', sm)
 
-            <div
+            <Box
               key={widget.widgetId}
               data-grid={{
                 x: state.layouts[currentBreakpoint][index].x,
@@ -461,7 +446,7 @@ const Dashboard: React.FC<DashboardProps> = ({ widgetList }) => {
                   todo-widget
                 </WidgetCard>
               </Grid>
-            </div>
+            </Box>
           ))}
       </ResponsiveGridLayout>
     </>
