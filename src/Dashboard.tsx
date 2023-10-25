@@ -118,21 +118,7 @@ const Dashboard: React.FC<DashboardProps> = ({ widgetList }) => {
       ],
     },
   })
-  // const [updatedLayouts, setupdatedLayouts] = useState<{
-  //   breakpoints: string
-  //   layouts: {
-  //     [key: string]: {
-  //       x: number
-  //       y: number
-  //       w: number
-  //       h: number
-  //       i: string
-  //       minW?: number
-  //       minH?: number
-  //       type: string
-  //     }[]
-  //   }
-  // }>()
+
   //레이아웃 공간 계산
   useEffect(() => {
     let totalVol = 0
@@ -287,6 +273,7 @@ const Dashboard: React.FC<DashboardProps> = ({ widgetList }) => {
   const onLayoutReset = async () => {
     // 레이아웃 정보를 초기 레이아웃으로 설정합니다.
     console.log('서버에 날라가는 값 보기', state)
+
     //FIXME: state에서 추가된 객체 obj값도 넣어주기
     alert('레이아웃을 수정합니다.')
     try {
@@ -307,8 +294,6 @@ const Dashboard: React.FC<DashboardProps> = ({ widgetList }) => {
       console.error('Error making PATCH request:', error)
     }
   }
-
-  // ...
 
   return (
     <>
