@@ -1,3 +1,6 @@
+### 처음 사용시
+- 기본적으로 json-server 활용해서 임의로 목 데이터 만들어서 사용했습니다. /mock 들어가서 bash start.sh 틀어서 바로 목 서버 사용하실 수 있어요!
+
 ### 현재 진행상황
 
 ![Screen Recording 2023-10-25 at 6 10 07 PM](https://github.com/asroq1/DND_Demo/assets/62472550/565d7c23-6cf9-4d9e-8fe2-f66602a79205)
