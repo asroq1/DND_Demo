@@ -1,47 +1,46 @@
-# Getting Started with Create React App
+### 현재 진행상황
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Screen Recording 2023-10-25 at 6 10 07 PM](https://github.com/asroq1/DND_Demo/assets/62472550/565d7c23-6cf9-4d9e-8fe2-f66602a79205)
 
-## Available Scripts
+- DND에서 좌표 값 및 위젯 객체의 값들을 따로 관리해서 원래 존재하던 위젯의 값들을 화면에 렌더링 하고 위치를 수정한 이후에 서버에 좌표 위치를 업데이트 하는 거까지 작동.
 
-In the project directory, you can run:
 
-### `npm start`
+<br/>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 문제사항
+![Screen Recording 2023-10-25 at 6 14 18 PM](https://github.com/asroq1/DND_Demo/assets/62472550/328b47f3-18c5-4b2d-bd81-ba1361c46b5f)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- DND에서 새로운 위젯을 추가하고 난 이후에 편집에서 확인 버튼을 누르면 현재 새로 추가된 위젯의 좌표 값은 백엔드 서버에 추가되는데, 이후에 새로운 위젯 객체의 값이 추가되지 않아 보이지 않는 문제가 발생함.
 
-### `npm test`
+```ts
+// 아래의 코드가 수정을 하는 코드인데, 아래 이미지에 첨부한 형태로 위젯 데이터가 날라가서 widgetList api에도 동일하게 put요청을 해야하는 상황
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ const onLayoutReset = async () => {
+    // 레이아웃 정보를 초기 레이아웃으로 설정합니다.
+    console.log('서버에 날라가는 값 보기', state)
 
-### `npm run build`
+    // state안에 새로 업데이트된 위젯 객체 값도 put으로 teamList_t1 api에 업데이트 해주면 될 거 같습니다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    //FIXME: state에서 추가된 객체 obj값도 넣어주기
+    alert('레이아웃을 수정합니다.')
+    try {
+      const updatedLayouts = {
+        breakpoints: 'lg',
+        layouts: {
+          ...state.layouts,
+        },
+      }
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+      console.log('업데이트된 데이터', updatedLayouts)
+      const response = await axios.put('http://localhost:4000/layout_1', {
+        state: updatedLayouts,
+      })
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-# DND_Demo
+      console.log('PATCH request successful:', response.data)
+    } catch (error) {
+      console.error('Error making PATCH request:', error)
+    }
+  }
+```
+#### 현재 날아가는 state객체 값
+<img width="725" alt="Screenshot 2023-10-25 at 6 21 20 PM" src="https://github.com/asroq1/DND_Demo/assets/62472550/958fb9e4-9b1e-46ef-b34d-e5f28dae4fbd">
